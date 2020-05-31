@@ -1,6 +1,5 @@
 const Promise = require('bluebird')
 const path = require('path')
-const createPaginatedPages = require('gatsby-paginate')
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
