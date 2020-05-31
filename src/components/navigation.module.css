@@ -45,13 +45,11 @@
   .navigation {
     flex-wrap: wrap;
     flex-direction: column;
+    align-items: center;
   }
   .menuWrap {
     justify-content: center;
     font-size: 16px;
     margin-top: 5px;
-  }
-  .logo {
-    align-self: center;
   }
 }
