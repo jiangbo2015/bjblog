@@ -16,7 +16,7 @@ class BlogList extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
-          {/* <Helmet title={siteTitle} /> */}
+          <Helmet title={'博江软件传媒'} />
           {/* <div className={styles.hero}>Blog</div> */}
           <div className="wrapper">
             <h2 className="section-headline">Our Blogs</h2>

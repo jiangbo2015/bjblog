@@ -10,15 +10,13 @@ import heroStyles from './blog-post.module.css'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-    console.log(this.props)
     const { prev, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff', paddingBottom: '30px' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`}>
-            <meta name="description" content={post.description || 'desc'} />
+          <Helmet title={`${post.title} | bjsoftware`}>
+            <meta name="description" content={post.description.description} />
           </Helmet>
           <div className={heroStyles.hero}>
             <Img
@@ -64,11 +62,6 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       createdAt(formatString: "MMMM Do, YYYY")
@@ -81,6 +74,9 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      description {
+        description
       }
     }
   }

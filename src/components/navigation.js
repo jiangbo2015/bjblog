@@ -11,6 +11,7 @@ export default () => (
         <a href="https://www.bjsoftware.org/develop/">软件开发</a>
         <a href="https://www.bjsoftware.org/promotion/">品牌营销</a>
         <a href="https://www.bjsoftware.org/template/">案例展示</a>
+        <a href="https://blog.bjsoftware.org/blog">博客</a>
         <a href="https://www.bjsoftware.org/contact/">联系我们</a>
       </div>
     </header>
