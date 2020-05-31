@@ -17,7 +17,9 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff', paddingBottom: '30px' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <Helmet title={`${post.title} | ${siteTitle}`}>
+            <meta name="description" content={post.description || 'desc'} />
+          </Helmet>
           <div className={heroStyles.hero}>
             <Img
               className={heroStyles.heroImage}
@@ -32,7 +34,7 @@ class BlogPostTemplate extends React.Component {
                 display: 'block',
               }}
             >
-              {post.publishDate}
+              {post.createdAt}
             </p>
             <div
               dangerouslySetInnerHTML={{
@@ -69,7 +71,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishDate(formatString: "MMMM Do, YYYY")
+      createdAt(formatString: "MMMM Do, YYYY")
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
           ...GatsbyContentfulFluid_tracedSVG

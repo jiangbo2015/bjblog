@@ -62,7 +62,7 @@ export const pageQuery = graphql`
       }
     }
     allContentfulBlogPost(
-      sort: { fields: [publishDate], order: DESC }
+      sort: { fields: [createdAt], order: DESC }
       limit: $limit
       skip: $skip
     ) {
@@ -71,7 +71,6 @@ export const pageQuery = graphql`
           title
           slug
           createdAt(formatString: "MMMM Do, YYYY")
-          tags
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_tracedSVG
