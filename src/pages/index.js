@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 export default () => {
-  window.location.href = '/blog'
+  useEffect(() => {
+    window.location.href = '/blog'
+  }, [])
   return null
 }
