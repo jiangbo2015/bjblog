@@ -1,20 +1,22 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
-import heroStyles from '../components/hero.module.css'
+import heroStyles from './blog-post.module.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    console.log(this.props)
+    const { prev, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
-        <div style={{ background: '#fff' }}>
+        <div style={{ background: '#fff', paddingBottom: '30px' }}>
           <Helmet title={`${post.title} | ${siteTitle}`} />
           <div className={heroStyles.hero}>
             <Img
@@ -37,6 +39,18 @@ class BlogPostTemplate extends React.Component {
                 __html: post.body.childMarkdownRemark.html,
               }}
             />
+          </div>
+          <div className="paginate">
+            {prev ? (
+              <Link to={`blog/${prev}`}>&larr;{prev}</Link>
+            ) : (
+              <span></span>
+            )}
+            {next ? (
+              <Link to={`blog/${next}`}>{next}&rarr;</Link>
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
       </Layout>

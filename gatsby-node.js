@@ -16,17 +16,6 @@ exports.createPages = ({ graphql, actions }) => {
                 node {
                   title
                   slug
-                  publishDate(formatString: "MMMM Do, YYYY")
-                  tags
-                  heroImage {
-                    fluid(
-                      maxWidth: 350
-                      maxHeight: 196
-                      resizingBehavior: SCALE
-                    ) {
-                      ...GatsbyContentfulFluid_tracedSVG
-                    }
-                  }
                 }
               }
             }
@@ -41,23 +30,33 @@ exports.createPages = ({ graphql, actions }) => {
         const posts = result.data.allContentfulBlogPost.edges
 
         // Create blog-list pages
-        createPaginatedPages({
-          edges: posts,
-          createPage: createPage,
-          pageTemplate: 'src/templates/blog-list-post.js',
-          pageLength: 2,
-          pathPrefix: '/list',
-          buildPath: (index, pathPrefix) =>
-            index > 1 ? `${pathPrefix}/${index}` : `${pathPrefix}`, // This is optional and this is the default
+        const postsPerPage = 2
+        const numPages = Math.ceil(posts.length / postsPerPage)
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+            component: path.resolve('./src/templates/blog-list-post.js'),
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              numPages,
+              currentPage: i + 1,
+            },
+          })
         })
 
         // create slug
         posts.forEach((post, index) => {
+          const prev = index === 0 ? null : posts[index - 1].node.slug
+          const next =
+            index === posts.length - 1 ? null : posts[index + 1].node.slug
           createPage({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
             context: {
               slug: post.node.slug,
+              next,
+              prev,
             },
           })
         })

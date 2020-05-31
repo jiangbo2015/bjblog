@@ -2,29 +2,24 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Helmet } from 'react-helmet'
-import styles from '../pages/blog.module.css'
+import styles from './blog-list.module.css'
 import Layout from '../components/layout'
 import ArticlePreview from '../components/article-preview'
 
 class BlogList extends React.Component {
   render() {
     // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const {
-      group: posts,
-      index,
-      first,
-      last,
-      pageCount,
-    } = this.props.pageContext
-    console.log(this.props.pageContext)
+    const { numPages, currentPage } = this.props.pageContext
+    console.log(this.props)
+    const { edges: posts } = this.props.data.allContentfulBlogPost
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>
           {/* <Helmet title={siteTitle} /> */}
-          <div className={styles.hero}>Blog</div>
+          {/* <div className={styles.hero}>Blog</div> */}
           <div className="wrapper">
-            <h2 className="section-headline">Recent articles</h2>
+            <h2 className="section-headline">Our Blogs</h2>
             <ul className="article-list">
               {posts.map(({ node }) => {
                 return (
@@ -34,6 +29,22 @@ class BlogList extends React.Component {
                 )
               })}
             </ul>
+            <div className="paginate">
+              {currentPage > 1 ? (
+                <Link
+                  to={`/blog/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
+                >
+                  prev page
+                </Link>
+              ) : (
+                <span></span>
+              )}
+              {currentPage < numPages ? (
+                <Link to={`/blog/${currentPage + 1}`}>next page</Link>
+              ) : (
+                <span></span>
+              )}
+            </div>
           </div>
         </div>
       </Layout>
@@ -42,3 +53,37 @@ class BlogList extends React.Component {
 }
 
 export default BlogList
+
+export const pageQuery = graphql`
+  query BlogList($skip: Int!, $limit: Int!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allContentfulBlogPost(
+      sort: { fields: [publishDate], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          title
+          slug
+          createdAt(formatString: "MMMM Do, YYYY")
+          tags
+          heroImage {
+            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
+          }
+          description {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+      }
+    }
+  }
+`
