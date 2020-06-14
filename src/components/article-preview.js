@@ -12,7 +12,10 @@ export default ({ article }) => (
       <small>{article.createdAt}</small>
       <div
         dangerouslySetInnerHTML={{
-          __html: article.description.childMarkdownRemark.html,
+          __html: article.description.childMarkdownRemark.html.replace(
+            /\n/,
+            '</br>'
+          ),
         }}
       />
     </div>
