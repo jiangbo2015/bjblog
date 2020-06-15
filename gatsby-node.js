@@ -46,9 +46,8 @@ exports.createPages = ({ graphql, actions }) => {
 
         // create slug
         posts.forEach((post, index) => {
-          const prev = index === 0 ? null : posts[index - 1].node.title
-          const next =
-            index === posts.length - 1 ? null : posts[index + 1].node.title
+          const prev = index === 0 ? null : posts[index - 1].node
+          const next = index === posts.length - 1 ? null : posts[index + 1].node
           createPage({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
