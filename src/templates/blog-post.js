@@ -42,12 +42,12 @@ class BlogPostTemplate extends React.Component {
           </div>
           <div className="paginate">
             {prev ? (
-              <Link to={`blog/${prev}`}>&larr;{prev}</Link>
+              <Link to={`/blog/${prev}`}>&larr;{prev}</Link>
             ) : (
               <span></span>
             )}
             {next ? (
-              <Link to={`blog/${next}`}>{next}&rarr;</Link>
+              <Link to={`/blog/${next}`}>{next}&rarr;</Link>
             ) : (
               <span></span>
             )}
