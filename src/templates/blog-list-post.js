@@ -31,16 +31,16 @@ class BlogList extends React.Component {
             </ul>
             <div className="paginate">
               {currentPage > 1 ? (
-                <Link
-                  to={`/blog/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
+                <a
+                  href={`/blog/${currentPage - 1 === 1 ? '' : currentPage - 1}`}
                 >
                   prev page
-                </Link>
+                </a>
               ) : (
                 <span></span>
               )}
               {currentPage < numPages ? (
-                <Link to={`/blog/${currentPage + 1}`}>next page</Link>
+                <a href={`/blog/${currentPage + 1}`}>next page</a>
               ) : (
                 <span></span>
               )}
