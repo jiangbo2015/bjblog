@@ -4,15 +4,16 @@ import styles from './navigation.module.css'
 export default () => (
   <nav role="navigation" className={styles.nav}>
     <header className={styles.navigation}>
-      <a href="https://www.bjsoftware.org/develop/">
-        <img className={styles.logo} src="/logo_blue.png" />
+      <a href="https://bojiangsoftware.com/develop/">
+        <img className={styles.logo} src="/head_logo.png" />
       </a>
       <div className={styles.menuWrap}>
-        <a href="https://www.bjsoftware.org/develop/">软件开发</a>
-        <a href="https://www.bjsoftware.org/promotion/">品牌营销</a>
-        <a href="https://www.bjsoftware.org/template/">案例展示</a>
-        <a href="https://blog.bjsoftware.org/blog">博客</a>
-        <a href="https://www.bjsoftware.org/contact/">联系我们</a>
+        <a href="https://bojiangsoftware.com/develop/">软件开发</a>
+        <a href="https://bojiangsoftware.com/promotion/">数字推广</a>
+        <a href="https://bojiangsoftware.com/ecommerce/">线上电商</a>
+        <a href="https://bojiangsoftware.com/template/">客户案例</a>
+        <a href="https://bojiangsoftware.com/#about">关于我们</a>
+        <a href="https://bojiangsoftware.com/contact/">联系我们</a>
       </div>
     </header>
   </nav>
