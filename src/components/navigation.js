@@ -9,8 +9,8 @@ export default () => (
       </a>
       <div className={styles.menuWrap}>
         <a href="https://bojiangsoftware.com/develop/">软件开发</a>
-        <a href="https://bojiangsoftware.com/promotion/">数字推广</a>
-        <a href="https://bojiangsoftware.com/ecommerce/">线上电商</a>
+        <a href="https://bojiangsoftware.com/promotion/">线上推广</a>
+        <a href="https://bojiangsoftware.com/ecommerce/">北美电商</a>
         <a href="https://bojiangsoftware.com/template/">客户案例</a>
         <a href="https://bojiangsoftware.com/#about">关于我们</a>
         <a href="https://bojiangsoftware.com/contact/">联系我们</a>
