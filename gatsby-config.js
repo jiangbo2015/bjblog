@@ -38,10 +38,10 @@ module.exports = {
       options: contentfulConfig,
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
         // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        trackingId: 'G-G9BXQPP2HE',
+        trackingIds: ['G-G9BXQPP2HE'],
       },
     },
   ],
