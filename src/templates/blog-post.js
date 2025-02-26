@@ -10,13 +10,17 @@ import heroStyles from './blog-post.module.css'
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
-    const { prev, next } = this.props.pageContext
+    const { prev, next, slug } = this.props.pageContext
 
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff', paddingBottom: '30px' }}>
           <Helmet title={`${post.title}`}>
             <meta name="description" content={post.description.description} />
+            <meta property="og:title" content={post.title} />
+            <meta property="og:description" content={post.description.description} />
+            <meta property="og:image" content={post.heroImage.fluid} />
+            <meta property="og:url" content={`https://blog.bojiangsoftware.com/${slug}`} />
           </Helmet>
           <div className={heroStyles.hero}>
             <Img
