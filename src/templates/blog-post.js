@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
             <meta name="description" content={post.description.description} />
             <meta property="og:title" content={post.title} />
             <meta property="og:description" content={post.description.description} />
-            <meta property="og:image" content={post.heroImage.fluid} />
+            <meta property="og:image" content={post.heroImage.fluid.src} />
             <meta property="og:url" content={`https://blog.bojiangsoftware.com/${slug}`} />
           </Helmet>
           <div className={heroStyles.hero}>
