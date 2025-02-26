@@ -15,7 +15,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff', paddingBottom: '30px' }}>
-          <Helmet title={`${post.title} | bojiangsoftware`}>
+          <Helmet title={`${post.title}`}>
             <meta name="description" content={post.description.description} />
           </Helmet>
           <div className={heroStyles.hero}>
